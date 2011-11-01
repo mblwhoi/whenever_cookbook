@@ -45,7 +45,7 @@ action :create do
 
   # Update crontab from whenever job files, triggered by update of job file template below.
   execute "update whenever job '#{job_file}'" do
-    command "echo `date --iso-8601=s` > /tmp/blork.txt; whenever -u #{user} -i -f '#{job_file}'"
+    command "whenever -u #{user} -i -f '#{job_file}'"
     action :nothing
   end
 
