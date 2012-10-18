@@ -39,7 +39,8 @@ end
 # Get list of existing old whenever job files.
 # Note that we extract both the job name and the user name from the file name to
 # use as the job key.
-old_jobs = `find #{node['whenever']['configs_dir']} -type f`.map do |job_file|
+
+old_jobs = Dir.glob("#{node['whenever']['configs_dir']}/*").map do |job_file|
   if File.basename(job_file) =~ /^__job:(.*)__user:(.*)$/
     [$1,$2]
   end
