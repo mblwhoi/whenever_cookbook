@@ -3,7 +3,7 @@
 # Attributes:: whenever
 #
 
-default[:whenever][:configs_dir] = "/data/whenever_jobs"
+default[:whenever][:configs_dir] = "/etc/whenever/jobs"
 
 default[:whenever][:jobs] = {}
 
