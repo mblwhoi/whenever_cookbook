@@ -18,13 +18,30 @@
 # limitations under the License.
 #
 
+include_recipe 'rvm::system'
+
+
+
+ruby_string = '1.9.3-p362@ops'
+
+rvm_gemset ruby_string
+
 # Install gem dependencies.
-gem_package "i18n" do
+rvm_gem "i18n" do
+  ruby_string ruby_string
   action :install
 end
 
-gem_package "whenever" do
+rvm_gem "whenever" do
+  ruby_string ruby_string
   action :install
+end
+
+
+rvm_wrapper "whenever" do
+  binaries ["whenever"]
+  ruby_string ruby_string
+  action :create
 end
 
 # Make sure directory exists for whenever config files.
